@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-deployment
+  labels:
+    app: python-executor
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: python-executor
+  template:
+    metadata:
+      labels:
+        app: python-executor
+    spec:
+      containers:
+        - name: python-executor
+          image: raymond1242/python-test:python-docker
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: "250m"
+

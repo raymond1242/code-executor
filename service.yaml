@@ -1,0 +1,16 @@
+# Service declaration
+apiVersion: v1
+kind: Service
+metadata:
+  name: python-service
+  labels:
+    app: python-executor
+spec:
+  type: LoadBalancer
+  selector:
+    app: python-executor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+
